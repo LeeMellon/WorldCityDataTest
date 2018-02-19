@@ -1,0 +1,11 @@
+@{
+  Layout = "_Layout";
+}
+
+
+@foreach (var city in Model)
+{
+<div class="cityDisplay">
+  <p>@city.GetCityName() : @city.GetCityPopulation()</p>
+</div>
+}
