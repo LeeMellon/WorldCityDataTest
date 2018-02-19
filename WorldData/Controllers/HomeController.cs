@@ -17,10 +17,13 @@ namespace WorldData.Controllers
           [HttpPost("/filter")]
           public ActionResult Result()
           {
-            string testOperator = Request.Form["where"];
+            string beginsWith = Request.Form["beginsWith"];
+            string operators = Request.Form["operators"];
             int popNumber = Convert.ToInt32(Request.Form["popNumber"]);
+            string namePop = Request.Form["namePop"];
             string order = Request.Form["order"];
-            List<City> newCityList = City.FilterPop(testOperator, popNumber, order);
+
+            List<City> newCityList = City.FilterPop(beginsWith, operators, popNumber,namePop,  order);
 
             return View("Index", newCityList);
           }

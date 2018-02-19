@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 <div class="">
-<h4>Filter by Population</h4>
+<!-- <h4>Filter by Population</h4>
 <form class="form" action="/filter" method="post">
   <select name="where">
   <option value="%">Choose</option>
@@ -16,9 +16,36 @@
   <option value="DESC">Descending</option>
   </select>
   <button type="submit" name="button">submit</button>
-</form>
+</form> -->
 </div>
 
+<div class="">
+  <h4>Filter by</h4>
+  <form class="form" action="/filter" method="post">
+    City Name Begins With
+    <input type="text" name="beginsWith" value="">
+      And population is
+    <select name="operators">
+    <option value="%">Choose</option>
+    <option value=">"> > </option>
+    <option value="=">=</option>
+    <option value="<"> < </option>
+    </select>
+    Than/To
+    <input type="number" name="popNumber" value="0">
+    Order by
+    <select name="namePop">
+    <option value="name">Name</option>
+    <option value="population">Population</option>
+    </select>
+    Ascending or Descending
+    <select name="order">
+    <option value="ASC">Ascending</option>
+    <option value="DESC">Descending</option>
+    </select>
+    <button type="submit" name="button">submit</button>
+  </form>
+</div>
 @foreach (var city in Model)
 {
 <div class="cityDisplay">

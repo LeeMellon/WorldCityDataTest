@@ -87,13 +87,13 @@ namespace WorldData.Models
         //       return allCities;
         //   }
 
-          public static List<City> FilterPop(string testOperator, int popNumber, string order)
+          public static List<City> FilterPop(string beginsWith, string operators, int popNumber, string namePop, string order)
             {
                 List<City> allCities = new List<City> {};
                 MySqlConnection conn = DB.Connection();
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-                cmd.CommandText = @"SELECT * FROM city WHERE population " + testOperator +" "+  popNumber +" ORDER BY population " + order + ";" ;
+                cmd.CommandText = @"SELECT * FROM city WHERE name LIKE " + "'"+ beginsWith +"%"+"'" +" AND population " + operators +" "+ popNumber + " ORDER BY " + namePop + " " + order +";" ;
                 MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
                 while(rdr.Read())
                 {
