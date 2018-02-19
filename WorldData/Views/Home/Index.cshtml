@@ -1,11 +1,27 @@
 @{
   Layout = "_Layout";
 }
-
+<div class="">
+<h4>Filter by Population</h4>
+<form class="form" action="/filter" method="post">
+  <select name="where">
+  <option value="%">Choose</option>
+  <option value=">"> > </option>
+  <option value="=">=</option>
+  <option value="<"> < </option>
+  </select>
+  <input type="number" name="popNumber" value="">
+  <select name="order">
+  <option value="ASC">Ascending</option>
+  <option value="DESC">Descending</option>
+  </select>
+  <button type="submit" name="button">submit</button>
+</form>
+</div>
 
 @foreach (var city in Model)
 {
 <div class="cityDisplay">
-  <p>@city.GetCityName() : @city.GetCityPopulation()</p>
+  <p>@city.GetCityName() : Population @city.GetCityPopulation() : Country Code @city.GetCountryCode()</p>
 </div>
 }

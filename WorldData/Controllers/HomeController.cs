@@ -10,16 +10,19 @@ namespace WorldData.Controllers
       [HttpGet("/")]
           public ActionResult Index()
           {
-            // City newCity = new City();
             List<City> newCityList = City.GetAll();
-            return View("Index", newCityList);
+            return View(newCityList);
 
           }
-          [HttpPost("/")]
+          [HttpPost("/filter")]
           public ActionResult Result()
           {
+            string testOperator = Request.Form["where"];
+            int popNumber = Convert.ToInt32(Request.Form["popNumber"]);
+            string order = Request.Form["order"];
+            List<City> newCityList = City.FilterPop(testOperator, popNumber, order);
 
-            return View();
+            return View("Index", newCityList);
           }
 
 
